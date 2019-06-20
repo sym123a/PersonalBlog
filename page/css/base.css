@@ -1,0 +1,162 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+body {
+    position: relative;
+    background: url('../img/bg.jpg');
+    text-align: center;
+    font-size: 14px;
+}
+
+@font-face {
+    font-family: "MyIcon";
+    src: url('../font/glyphicons-halflings-regular.woff2')
+}
+
+/* header */
+.header {
+    width: 100%;
+    height: 50px;
+    background: #191818;
+}
+.container{
+    position: relative;
+    width: 1170px;
+    height: 50px;
+    margin: 0 auto;
+}
+.title{
+    display: inline-block;
+    color: #eee;
+    float: left;
+    line-height: 50px;
+    margin: 0px 15px;
+    font-size: 18px;
+}
+.menu {
+    float: left;
+}
+.menu > li {
+    display: inline-block;
+    line-height: 50px;
+    width: 58px;
+    font-size: 14px;
+    text-align: center;
+}
+.menu > li > a {
+    color: #eee;
+}
+
+.searchBar{
+    /*position: relative;*/
+    /*float: right;*/
+    /*margin: 0px 15px;*/
+    /*line-height: 50px;*/
+}
+.searchBar > input {
+    right: 60px;
+    height: 22px;
+    font-size: 14px;
+    border: 1px solid;
+}
+.searchBar > input,
+.searchBar > button {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 8px;
+}
+.searchBar > button {
+    right: 0px;
+    width: 54px;
+    height: 34px;
+    color: #555;
+    background-color: #fff;
+}
+
+/* content */
+.content {
+    width: 1170px;
+    position: relative;
+    display: inline-block;
+    margin: 30px auto 0px auto;
+}
+.content_left{
+    width: 66%;
+    float: left;
+    padding: 0px 20px 0px 0px;
+    box-sizing: border-box;
+}
+.content_right{
+    float: right;
+    width: 34%;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.right_module{
+    width: 100%;
+    background: #1f1f1f;
+    border-radius: 10px;
+    padding: 0px 15px 25px 15px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 14px;
+
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.right_module > div {
+    padding: 15px 5px 15px 0px;
+    color: dodgerblue;
+}
+.right_module > a {
+    margin-right: 5px;
+    color: dodgerblue;
+}
+.right_module ul > li {
+    padding: 8px 0;
+    border-bottom: 1px solid #292929;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.right_module ul > li > a{
+    color: #ffffff;
+}
+.right_module ul > li > div {
+    padding: 5px 0px;
+}
+.right_module ul > li > div > span{
+    color: #ffffff;
+}
+.right_module ul > li > p{
+    color: #777;
+}
+.pull_right{
+    position: absolute;
+    right: 15px;
+    font-size: 12px;
+}
+
+.right_module > span {
+    display: inline-block;
+    width: 49%;
+    height: 30px;
+    margin-top: 10px;
+}
+.right_module > span > a{
+    color: #ffffff;
+    line-height: 30px;
+}

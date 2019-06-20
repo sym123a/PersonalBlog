@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>personal-blog</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/blog_detail.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <a href="/" class="title">我的个人博客 | 技术博客</a>
+        <ul class="menu">
+            <li><a href="/">首页</a></li>
+            <li><a href="/sitemap.html">地图</a></li>
+            <li><a href="/about.html">关于</a></li>
+            <li><a href="/guestbook.html">留言</a></li>
+        </ul>
+        <div class="searchBar">
+            <input type="text" placeholder="输入关键词查找">
+            <button>搜索</button>
+        </div>
+    </div>
+</header>
+<div class="content">
+    <div class="content_left">
+        <div class="blog" id="blog_detail">
+            <div class="blog_title">{{blogDetailList.title}}}</div>
+            <div class="blog_msg">作者：Panda 标签：{{blogDetailList.tags}} 发布于：{{blogDetailList.ctime}} 浏览：{{blogDetailList.views}}</div>
+            <div class="blog_content" v-html="blogDetailList.content"></div>
+        </div>
+
+        <div class="blog_comments" id="blog_comments">
+            <span class="blog_comments_msg">当前文章：目前有{{total || 0}}条留言</span>
+            <div class="blog_comment" v-for="comment in comments">
+                <span><b>{{comment.user_name}}</b>: {{comment.parent > -1 ? '回复@'+comment.parent_name: ''}} 发布于 {{comment.ctime}} <a @click="reply(comment)">[回复]</a></span>
+                <div>{{comment.content}}</div>
+            </div>
+        </div>
+
+        <div class="send_comments" id="send_comment">
+            <span>发布评论</span>
+            <div>
+                <input type="hidden" id="reply" v-model="comment_reply"/>
+                <input type="hidden" v-model="comment_reply_name"/>
+                <input type="text" placeholder="昵称" v-model="comment_name"/>
+                <input type="text" placeholder="邮箱(评论被回复时你能收到通知)" v-model="comment_email"/>
+            </div>
+            <div>
+                <textarea v-model="comment_content" cols="30" rows="10" placeholder="无意义的内容我可能不会回复你"></textarea>
+            </div>
+            <div>
+                <input type="text" placeholder="验证码" v-model="comment_code">
+                <span @click="changeCode" v-html="vcode"></span>
+            </div>
+            <button @click="sendComment">提交评论</button>
+        </div>
+    </div>
+    <div class="content_right">
+        <div class="right_module" id="random_tags">
+            <div>随机标签云</div>
+            <a href="/" v-for="item in tags" :style="{color: randomColor(), fontSize: randomSize()}">{{item.tag}}</a>
+        </div>
+        <div class="right_module" id="new_hot">
+            <div>最近热门</div>
+            <ul class="hot">
+                <li v-for="hot in titleList"><a :href="'/blog_detail.html?bid='+hot.id">{{hot.title}}}</a></li>
+            </ul>
+        </div>
+        <div class="right_module" id="new_comments">
+            <div>最新评论</div>
+            <ul>
+                <li v-for="comment in commentList">
+                    <div>
+                        <span>{{comment.user_name}}</span>
+                        <span  class="pull_right">[{{comment.ctime}}]]</span>
+                    </div>
+                    <p>{{comment.content}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="right_module">
+            <div>友情链接</div>
+            <span><a href="/">爱女见覅</a></span>
+            <span><a href="/">爱女见覅</a></span>
+            <span><a href="/">爱女见覅</a></span>
+        </div>
+    </div>
+</div>
+<!-- footer -->
+<script src="./js/base.js"></script>
+<script src="./js/blog_detail.js"></script>
+</body>
+</html>
