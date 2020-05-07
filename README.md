@@ -1,4 +1,6 @@
 # PersonalBlog （个人博客）
 
 ##
-html + vue
+前端：html + vue
+
+后端：express + sql
